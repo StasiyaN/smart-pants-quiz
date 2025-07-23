@@ -57,15 +57,16 @@ function showQuestion() {
         html += `
             <div class="options">
                 ${q.options.map((option, index) => `
-                    <button class="option-btn" onclick="selectOption(${index})">${option}</button>
+                    <button class="btn option-btn" onclick="selectOption(${index})">${option}</button>
                 `).join('')}
             </div>
         `;
     } else if (q.type === 'input') {
         html += `
-            <input type="text" id="text-answer" class="answer-input" placeholder="Введите ответ">
-            <br><br>
-            <button class="btn" onclick="submitTextAnswer()">Подтвердить</button>
+            <div class="input-block">
+                <input type="text" id="text-answer" class="answer-input" placeholder="Введите ответ">
+                <button class="btn submit" onclick="submitTextAnswer()">Подтвердить</button>
+            </div>        
         `;
     }
 

@@ -23,13 +23,16 @@ body {
     padding: 40px;
 }
 
-.start h1 {
+.start h1,
+.result h2 {
     font-size: 45px;
     font-weight: 700;
     margin-bottom: 20px;
 }
 
-.start p {
+
+.start p,
+.result p {
     font-size: 20px;
     font-weight: 400;
     margin-bottom: 30px;
@@ -45,6 +48,7 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+
 }
 
 .btn:hover {
@@ -52,6 +56,22 @@ body {
     background-color: #546c64;
 }
 
+/*options*/
+
+.options {
+    margin-top: 20px;
+}
+
+.option-btn {
+    border-radius: 25px;
+    font-size: 15px;
+    padding: 10px 15px;
+}
+
+.option-btn:hover {
+    background: #F1F2B5;
+    color: black;
+}
 /*feedback styles*/
 .feedback {
     margin-top: 20px;
@@ -61,6 +81,7 @@ body {
     padding: 10px;
     border-radius: 10px;
     display: inline-block;
+
 }
 
 .feedback.correct {
@@ -73,4 +94,24 @@ body {
     color: #991b1b;
     background-color: #fee2e2;
     border: 2px solid #ef4444;
+}
+
+/*submit+input*/
+input {
+    border-radius: 25px;
+    height: 30px;
+    padding-left: 10px;
+}
+.input-block {
+    margin-top: 20px;
+}
+
+.submit {
+    padding: 7px 10px;
+    font-size: 10px;
+    background-color: black;
+}
+
+.navigation {
+    margin-top: 20px;
 }
