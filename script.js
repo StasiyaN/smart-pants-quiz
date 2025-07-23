@@ -47,6 +47,11 @@ function showQuestion() {
                 `).join('')}
             </div>
         </div>
+        <div class="navigation">
+          <button class="btn" onclick="nextQuestion()" id="next-btn" disabled>
+                ${currentQuestion === questions.length - 1 ? 'Завершить' : 'Далее'}
+            </button>
+        </div>
     `;
 }
 
