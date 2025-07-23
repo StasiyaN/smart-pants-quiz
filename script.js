@@ -49,21 +49,38 @@ startBtn.addEventListener('click', () => {
 // Функция показа вопроса
 function showQuestion() {
     const q = questions[currentQuestion];
-    quizContent.innerHTML = `
+
+    let html = `
         <div class="question-block">
             <h2>${q.question}</h2>
+    `;
+
+    if (q.type === 'multiple') {
+        html += `
             <div class="options">
                 ${q.options.map((option, index) => `
                     <button class="option-btn" onclick="selectOption(${index})">${option}</button>
                 `).join('')}
             </div>
+        `;
+    } else if (q.type === 'input') {
+        html += `
+            <input type="text" id="text-answer" class="answer-input" placeholder="Введите ответ">
+            <br><br>
+            <button class="btn" onclick="submitTextAnswer()">Подтвердить</button>
+        `;
+    }
+
+    html += `
         </div>
         <div class="navigation">
-          <button class="btn" onclick="nextQuestion()" id="next-btn" disabled>
+            <button class="btn" onclick="nextQuestion()" id="next-btn" disabled>
                 ${currentQuestion === questions.length - 1 ? 'Завершить' : 'Далее'}
             </button>
         </div>
     `;
+
+    quizContent.innerHTML = html;
 }
 
 // Функция выбора варианта
