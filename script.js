@@ -20,8 +20,7 @@ const questions = [
     {
         type: 'input',
         question: 'Как называется процесс превращения воды в пар?',
-        correct: 'испарение',
-        acceptableAnswers: ['испарение', 'парообразование', 'выпаривание']
+        correct: ['испарение', 'парообразование', 'выпаривание']
     },
     {
         type: 'multiple',
@@ -32,8 +31,7 @@ const questions = [
     {
         type: 'input',
         question: 'Сколько континентов на Земле?',
-        correct: '7',
-        acceptableAnswers: ['7', 'семь', 'VII']
+        correct: ['7', 'семь', 'VII']
     }
 ];
 
@@ -83,12 +81,6 @@ function showQuestion() {
     quizContent.innerHTML = html;
 }
 
-// Функция выбора варианта
-function selectOption(index) {
-    answers[currentQuestion] = index;
-    alert(index === questions[currentQuestion].correct ? 'Правильно!' : 'Неправильно!');
-}
-
 // Сохраним выбор и включим кнопку "Далее":
 
 function selectOption(index) {
@@ -105,7 +97,7 @@ function selectOption(index) {
 //Обработка "Далее":
 function nextQuestion() {
     currentQuestion++;
-    if (currentQuestion < questions.length>) {
+    if (currentQuestion < questions.length) {
         showQuestion();
     } else {
         showResults();
@@ -128,4 +120,20 @@ function showResults() {
     `;
 }
 
+//submitTextAswer function to show
+function submitTextAnswer() {
+    const input = document.getElementById('text-answer');
+    const userAnswer = input.value.trim().toLowerCase();
+    const correctAnswers = questions[currentQuestion].correct.map(ans => ans.toLowerCase());
+
+    answers[currentQuestion] = userAnswer;
+
+    if (correctAnswers.includes(userAnswer)) {
+        input.style.border = '2px solid green';
+    } else {
+        input.style.border = '2px solid red';
+    }
+
+    document.getElementById('next-btn').disabled = false;
+}
 
