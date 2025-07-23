@@ -18,12 +18,23 @@ const questions = [
         correct: 2
     },
     {
+        type: 'input',
+        question: 'Как называется процесс превращения воды в пар?',
+        correct: 'испарение',
+        acceptableAnswers: ['испарение', 'парообразование', 'выпаривание']
+    },
+    {
         type: 'multiple',
         question: 'Кто написал роман "Война и мир"?',
         options: ['Достоевский', 'Пушкин', 'Толстой', 'Гоголь'],
         correct: 2
+    },
+    {
+        type: 'input',
+        question: 'Сколько континентов на Земле?',
+        correct: '7',
+        acceptableAnswers: ['7', 'семь', 'VII']
     }
-
 ];
 
 
