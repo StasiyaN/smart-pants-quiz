@@ -61,4 +61,43 @@ function selectOption(index) {
     alert(index === questions[currentQuestion].correct ? 'Правильно!' : 'Неправильно!');
 }
 
+// Сохраним выбор и включим кнопку "Далее":
+
+function selectOption(index) {
+    answers[currentQuestion] = index;
+
+    // Подсветка выбранной кнопки
+    const buttons = document.querySelectorAll('.option-btn');
+    buttons.forEach(btn => btn.disabled = true); // отключаем все
+
+    buttons[index].style.backgroundColor = index === questions[currentQuestion].correct ? 'green' : 'red';
+    document.getElementById('next-btn').disabled = false;
+}
+
+//Обработка "Далее":
+function nextQuestion() {
+    currentQuestion++;
+    if (currentQuestion < questions.length>) {
+        showQuestion();
+    } else {
+        showResults();
+    }
+}
+
+//show results function
+function showResults() {
+    let score = 0;
+    questions.forEach((q, i) => {
+        if (answers[i] === q.correct) score ++;
+    });
+
+    quizContent.innerHTML = `
+        <div class="result">
+            <h2>Тест завершён!</h2>
+            <p>Вы набрали ${score} из ${questions.length} (${Math.round(score / questions.length * 100)}%)</p>
+            <button class="btn" onclick="location.reload()">Пройти снова</button>
+        </div>
+    `;
+}
+
 
