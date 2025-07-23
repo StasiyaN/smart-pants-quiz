@@ -70,6 +70,10 @@ function showQuestion() {
     }
 
     html += `
+        <div id="feedback" class="feedback"></div>
+        `;
+
+    html += `
         </div>
         <div class="navigation">
             <button class="btn" onclick="nextQuestion()" id="next-btn" disabled>
@@ -86,11 +90,15 @@ function showQuestion() {
 function selectOption(index) {
     answers[currentQuestion] = index;
 
-    // Подсветка выбранной кнопки
     const buttons = document.querySelectorAll('.option-btn');
-    buttons.forEach(btn => btn.disabled = true); // отключаем все
+    buttons.forEach(btn => btn.disabled = true);
 
-    buttons[index].style.backgroundColor = index === questions[currentQuestion].correct ? 'green' : 'red';
+    const feedback = document.getElementById('feedback');
+    const isCorrect = index === questions[currentQuestion].correct;
+
+    feedback.textContent = isCorrect ? '✅ Правильно!' : '❌ Неправильно!';
+    feedback.classList.add(isCorrect ? 'correct' : 'incorrect');
+
     document.getElementById('next-btn').disabled = false;
 }
 
@@ -120,7 +128,7 @@ function showResults() {
     `;
 }
 
-//submitTextAswer function to show
+//submitTextAnswer function to show
 function submitTextAnswer() {
     const input = document.getElementById('text-answer');
     const userAnswer = input.value.trim().toLowerCase();
@@ -128,12 +136,13 @@ function submitTextAnswer() {
 
     answers[currentQuestion] = userAnswer;
 
-    if (correctAnswers.includes(userAnswer)) {
-        input.style.border = '2px solid green';
-    } else {
-        input.style.border = '2px solid red';
-    }
+    const isCorrect = correctAnswers.includes(userAnswer);
+    const feedback = document.getElementById('feedback');
 
+    feedback.textContent = isCorrect ? '✅ Правильно!' : '❌ Неправильно!';
+    feedback.classList.add(isCorrect ? 'correct' : 'incorrect');
+
+    input.disabled = true;
     document.getElementById('next-btn').disabled = false;
 }
 

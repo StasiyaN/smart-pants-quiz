@@ -51,3 +51,26 @@ body {
     transform: translateY(-2px);
     background-color: #546c64;
 }
+
+/*feedback styles*/
+.feedback {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.feedback.correct {
+    color: #166534;
+    background-color: #d1fae5;
+    border: 2px solid #22c55e;
+}
+
+.feedback.incorrect {
+    color: #991b1b;
+    background-color: #fee2e2;
+    border: 2px solid #ef4444;
+}
