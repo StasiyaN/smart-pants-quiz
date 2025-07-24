@@ -117,7 +117,17 @@ function nextQuestion() {
 function showResults() {
     let score = 0;
     questions.forEach((q, i) => {
-        if (answers[i] === q.correct) score ++;
+        if (q.type === 'multiple') {
+            if (answers[i] === q.correct) {
+                score++;
+            }
+        } else if (q.type === 'input') {
+            const userAnswer = (answers[i] || '').toLowerCase().trim();
+            const correctAnswers = q.correct.map(ans => ans.toLowerCase());
+            if (correctAnswers.includes(userAnswer)) {
+                score++;
+            }
+        }
     });
 
     quizContent.innerHTML = `
